@@ -8,8 +8,55 @@
 
 import SwiftUI
 
+//struct LoginView: View {
+//    @State private var username: String = ""
+//    @State private var password: String = ""
+//    @State private var isLoginValid: Bool = false
+//
+//
+//    var body: some View {
+//        VStack {
+//            Text("Login")
+//                .font(.largeTitle)
+//                .fontWeight(.bold)
+//
+//            TextField("Username", text: $username)
+//                .padding()
+//                .autocapitalization(.none)
+//
+//            SecureField("Password", text: $password)
+//                .padding()
+//                .autocapitalization(.none)
+//
+//            Button(action: {
+//                print("Login Button Pressed!")
+//                // 여기서 로그인 처리 로직을 수행하십시오.
+//                isLoginValid = true
+//                print("isLoginValid: \(isLoginValid)")
+//            }) {
+//                Text("Login")
+//                    .font(.headline)
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .frame(width: 220, height: 60)
+//                    .background(Color.blue)
+//                    .cornerRadius(15.0)
+//            }
+//
+//            NavigationLink(destination: ContentView().environmentObject(ImageViewModel()), isActive: $isLoginValid) {
+//                                EmptyView()
+//                            }
+//                            .hidden()
+//        }
+//        .padding()
+//    }
+//}
+
+
 struct ContentView: View {
      var imageViewModel: ImageViewModel = ImageViewModel()
+    
+//    @State private var isLoggedIn = false
     
     @State private var showSheet: Bool = false
     @State private var showImagePicker: Bool = false
@@ -20,18 +67,35 @@ struct ContentView: View {
     @State private var label: String = ""
     
     var body: some View {
-        
+//        if isLoggedIn {
         NavigationView {
             
             VStack {
                 
                 Image(uiImage: image ?? UIImage(named: "placeholder")!)
                     .resizable()
-                    .frame(width: 300, height: 300)
+                    .frame(width: 300, height: 400)
+                            .cornerRadius(10) // 모서리 둥글게
+                            .shadow(radius: 10) // 그림자 추가
+                            .padding(.bottom, 50) // 아래 버튼과의 간격
                 
-                Button("Choose Picture") {
+                
+                Button(action: {
                     self.showSheet = true
-                }.padding()
+                }) {
+                    HStack {
+                        Spacer()
+                        Text("Choose Picture")
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                }
+                .padding()
+                .background(Color.white)
+                .font(.headline)
+                .cornerRadius(10)
+                .shadow(radius: 3)
+                .frame(width: 300, height: 50)
                     .actionSheet(isPresented: $showSheet) {
                         ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
                             .default(Text("Photo Library")) {
@@ -47,11 +111,23 @@ struct ContentView: View {
                 }
               
                 
-                Button("Classify") {
+                Button(action: {
                     imageViewModel.classifyImage(newImage : self.image)
                     checkSafe(string: imageViewModel.classificationLabel)
-                                }
-                                .padding()
+                }) {
+                    HStack {
+                        Spacer()
+                        Text("Classify")
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                }
+                .padding()
+                .background(Color.white)
+                .font(.headline)
+                .cornerRadius(10)
+                .shadow(radius: 3)
+                .frame(width: 300, height: 50)
                 
                 
                 Text(
@@ -69,7 +145,9 @@ struct ContentView: View {
 //            ImagePicker(image: self.$imageViewModel.image, isShown: self.$showImagePicker, sourceType: self.sourceType)
 //                .environmentObject(self.imageViewModel)
         }
-
+//        } else {
+//                    LoginView()
+//                }
 
     }
     

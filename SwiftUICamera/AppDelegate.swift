@@ -18,6 +18,7 @@ struct ImageAIApp: App {
 
     var body: some Scene {
         WindowGroup {
+//            LoginView()
             ContentView()
                 .environmentObject(imageViewModel)
         }
