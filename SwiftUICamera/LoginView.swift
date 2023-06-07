@@ -16,13 +16,7 @@ struct LoginView: View {
 
     @State private var isLoginValid: Bool = false
     
-//    @EnvironmentObject var contentView: ContentView
-//    private var contentView: ContentView;
-    
-//    init(contentView : ContentView) {
-//            self.contentView = contentView
-//        }
-    
+
 
     func setDate(){
         let currentDate = Date()
@@ -54,10 +48,7 @@ struct LoginView: View {
                     // 여기서 로그인 처리 로직을 수행하십시오.
                     isLoginValid = true
                     print("isLoginValid: \(isLoginValid)")
-                    //                contentView.setLogginTrue()
-                    //                ContentView()
-//                    SharedValue.shared.isLoggedIn = true
-                    //                ContentView.isLoggedIn = true
+                    
                     
                 })
                 {
