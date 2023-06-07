@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CalendarView: View {
     @State private var selectedDates = [Date]()
+    @Binding var datesCheckedIn: [Date]
+    @EnvironmentObject var checkInViewModel: CheckInViewModel
     
     var body: some View {
         let calendar = Calendar.current

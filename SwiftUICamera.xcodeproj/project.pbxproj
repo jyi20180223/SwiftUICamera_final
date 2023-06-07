@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		87859E2B2A2B5CC7005CC212 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87859E292A2B5CC7005CC212 /* ImageViewModel.swift */; };
 		87859E2C2A2B5CC7005CC212 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 87859E2A2A2B5CC7005CC212 /* Resnet50.mlmodel */; };
+		87EEEFE42A310304000BB21C /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EEEFE32A310304000BB21C /* CheckInViewModel.swift */; };
 		87F4EC552A2F796700BC602F /* SharedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC542A2F796700BC602F /* SharedValue.swift */; };
 		87F4EC572A2F82B600BC602F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC562A2F82B600BC602F /* LoginView.swift */; };
 		87F4EC592A2F8AD000BC602F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC582A2F8ACF00BC602F /* CalendarView.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		87859E292A2B5CC7005CC212 /* ImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewModel.swift; path = "../../ImageAI-copy/ImageAI/ImageViewModel.swift"; sourceTree = "<group>"; };
 		87859E2A2A2B5CC7005CC212 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = "../../ImageAI-copy/ImageAI/Resnet50.mlmodel"; sourceTree = "<group>"; };
+		87EEEFE32A310304000BB21C /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
 		87F4EC542A2F796700BC602F /* SharedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedValue.swift; sourceTree = "<group>"; };
 		87F4EC562A2F82B600BC602F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		87F4EC582A2F8ACF00BC602F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				87F4EC542A2F796700BC602F /* SharedValue.swift */,
 				87F4EC562A2F82B600BC602F /* LoginView.swift */,
 				87F4EC582A2F8ACF00BC602F /* CalendarView.swift */,
+				87EEEFE32A310304000BB21C /* CheckInViewModel.swift */,
 			);
 			path = SwiftUICamera;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				87859E2B2A2B5CC7005CC212 /* ImageViewModel.swift in Sources */,
 				8DD60FE723F251FE009F6EED /* ImagePicker.swift in Sources */,
 				8DD60FD523F24F6C009F6EED /* SceneDelegate.swift in Sources */,
+				87EEEFE42A310304000BB21C /* CheckInViewModel.swift in Sources */,
 				87859E2C2A2B5CC7005CC212 /* Resnet50.mlmodel in Sources */,
 				87F4EC592A2F8AD000BC602F /* CalendarView.swift in Sources */,
 				87F4EC552A2F796700BC602F /* SharedValue.swift in Sources */,

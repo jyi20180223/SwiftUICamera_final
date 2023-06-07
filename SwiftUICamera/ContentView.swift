@@ -9,68 +9,13 @@
 import SwiftUI
 
 
-//struct LoginView: View {
-//    @State private var username: String = ""
-//    @State private var password: String = ""
-//    @State private var isLoginValid: Bool = false
-////    @EnvironmentObject var contentView: ContentView
-////    private var contentView: ContentView;
-//
-////    init(contentView : ContentView) {
-////            self.contentView = contentView
-////        }
-//
-//
-//    var body: some View {
-//
-//        VStack {
-//            Text("Login")
-//                .font(.largeTitle)
-//                .fontWeight(.bold)
-//
-//            TextField("Username", text: $username)
-//                .padding()
-//                .autocapitalization(.none)
-//
-//            SecureField("Password", text: $password)
-//                .padding()
-//                .autocapitalization(.none)
-//
-//            Button(action: {
-//
-//                print("Login Button Pressed!")
-//                // 여기서 로그인 처리 로직을 수행하십시오.
-//                isLoginValid = true
-//                print("isLoginValid: \(isLoginValid)")
-////                contentView.setLogginTrue()
-////                ContentView()
-//                SharedValue.shared.isLoggedIn = true
-////                ContentView.isLoggedIn = true
-//
-//            })
-//            {
-//                Text("Login")
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .frame(width: 220, height: 60)
-//                    .background(Color.blue)
-//                    .cornerRadius(15.0)
-//            }
-//
-//            NavigationLink(destination: ContentView(), isActive: $isLoginValid) {
-//                                EmptyView()
-//                            }
-//                            .hidden()
-//        }
-//        .padding()
-//    }
-//}
+
 
 
 struct ContentView: View {
      var imageViewModel: ImageViewModel = ImageViewModel()
     
+    @State private var isShowingCalendar = false
     @State public var isLoggedIn = false
 
     @State private var showingAlert = false
@@ -80,7 +25,7 @@ struct ContentView: View {
     @State private var showImagePicker: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     
-//    @State private var isShowingCalendar = false
+
     
     
     @State private var image: UIImage?
@@ -88,7 +33,9 @@ struct ContentView: View {
     
     @State public var usrName: String = ""
     
-//    @State private var dateString: String = SharedValue.shared.dateString
+    @State private var showingCalendar = false
+    @ObservedObject var checkInViewModel = CheckInViewModel()
+
     
     var body: some View {
         if isLoggedIn {
@@ -96,22 +43,8 @@ struct ContentView: View {
             
             
             VStack {
-//                Button(action: {
-//                                self.isShowingCalendar = true
-//                    dateString = SharedValue.shared.dateString
-//                            }) {
-//                                Text("Show Calendar")
-//                                    .font(.headline)
-//                                    .foregroundColor(.white)
-//                                    .padding()
-//                                    .frame(maxWidth: .infinity)
-//                                    .background(Color.blue)
-//                                    .cornerRadius(15.0)
-//                            }
-//                            .sheet(isPresented: $isShowingCalendar) {
-//                                            CalendarView()
-//                                        }
-                
+
+               
                 
                 Image(uiImage: image ?? UIImage(named: "placeholder")!)
                     .resizable()
@@ -195,9 +128,14 @@ struct ContentView: View {
             }
                 
                 
-            .navigationBarTitle(usrName)
-            
-        }.sheet(isPresented: $showImagePicker) {
+            .navigationBarItems(trailing: Button(action: {
+                    showingCalendar = true
+                }) {
+                    Image(systemName: "calendar")
+                })
+                .sheet(isPresented: $showingCalendar) {
+                    CalendarView(datesCheckedIn: $checkInViewModel.datesCheckedIn)
+                }
             
             ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
         }
@@ -207,14 +145,7 @@ struct ContentView: View {
 
     }
     
-//    func setDate(){
-//        let currentDate = Date()
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd" // 반환할 날짜 형식 지정
-//        dateString = dateFormatter.string(from: currentDate)
-//
-//    }
+
     
     func checkSafe(string: String) {
         let tools = ["helmet", "mask", "vest", "shoe"]
@@ -248,27 +179,7 @@ struct ContentView: View {
                 }
             }
         }
-//        for resultIdx in 0..<20 {
-//            for index in 0..<tools.count {
-//                if (results[resultIdx].contains(tools[index])) {
-//                    isExist[index] = "O"
-//                }
-//            }
-//        }
-        
-//        for result in results {
-//            for index in 0..<tools.count {
-//                if (result.contains(tools[index])) {
-//                    isExist[index] = "O"
-//                }
-//            }
-////            for tool in tools {
-////                if (result.contains(tool)) {
-////                    newLabel += result + "\n"
-////                    continue loop
-////                }
-////            }
-//        }
+
         for index in 0..<tools.count {
             newLabel += tools[index] + " : " + isExist[index] + "\n"
         }
