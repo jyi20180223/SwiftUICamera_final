@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		87859E2B2A2B5CC7005CC212 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87859E292A2B5CC7005CC212 /* ImageViewModel.swift */; };
 		87859E2C2A2B5CC7005CC212 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 87859E2A2A2B5CC7005CC212 /* Resnet50.mlmodel */; };
+		87F4EC552A2F796700BC602F /* SharedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC542A2F796700BC602F /* SharedValue.swift */; };
+		87F4EC572A2F82B600BC602F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC562A2F82B600BC602F /* LoginView.swift */; };
+		87F4EC592A2F8AD000BC602F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4EC582A2F8ACF00BC602F /* CalendarView.swift */; };
 		8DD60FD323F24F6C009F6EED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD60FD223F24F6C009F6EED /* AppDelegate.swift */; };
 		8DD60FD523F24F6C009F6EED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD60FD423F24F6C009F6EED /* SceneDelegate.swift */; };
 		8DD60FD723F24F6C009F6EED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD60FD623F24F6C009F6EED /* ContentView.swift */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		87859E292A2B5CC7005CC212 /* ImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewModel.swift; path = "../../ImageAI-copy/ImageAI/ImageViewModel.swift"; sourceTree = "<group>"; };
 		87859E2A2A2B5CC7005CC212 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = "../../ImageAI-copy/ImageAI/Resnet50.mlmodel"; sourceTree = "<group>"; };
+		87F4EC542A2F796700BC602F /* SharedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedValue.swift; sourceTree = "<group>"; };
+		87F4EC562A2F82B600BC602F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		87F4EC582A2F8ACF00BC602F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8DD60FCF23F24F6C009F6EED /* SwiftUICamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD60FD223F24F6C009F6EED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DD60FD423F24F6C009F6EED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,9 @@
 				8DD60FE623F251FE009F6EED /* ImagePicker.swift */,
 				87859E292A2B5CC7005CC212 /* ImageViewModel.swift */,
 				87859E2A2A2B5CC7005CC212 /* Resnet50.mlmodel */,
+				87F4EC542A2F796700BC602F /* SharedValue.swift */,
+				87F4EC562A2F82B600BC602F /* LoginView.swift */,
+				87F4EC582A2F8ACF00BC602F /* CalendarView.swift */,
 			);
 			path = SwiftUICamera;
 			sourceTree = "<group>";
@@ -160,6 +169,9 @@
 				8DD60FE723F251FE009F6EED /* ImagePicker.swift in Sources */,
 				8DD60FD523F24F6C009F6EED /* SceneDelegate.swift in Sources */,
 				87859E2C2A2B5CC7005CC212 /* Resnet50.mlmodel in Sources */,
+				87F4EC592A2F8AD000BC602F /* CalendarView.swift in Sources */,
+				87F4EC552A2F796700BC602F /* SharedValue.swift in Sources */,
+				87F4EC572A2F82B600BC602F /* LoginView.swift in Sources */,
 				8DD60FD723F24F6C009F6EED /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

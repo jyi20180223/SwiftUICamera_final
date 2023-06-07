@@ -8,13 +8,21 @@
 
 import SwiftUI
 
+
 //struct LoginView: View {
 //    @State private var username: String = ""
 //    @State private var password: String = ""
 //    @State private var isLoginValid: Bool = false
+////    @EnvironmentObject var contentView: ContentView
+////    private var contentView: ContentView;
+//
+////    init(contentView : ContentView) {
+////            self.contentView = contentView
+////        }
 //
 //
 //    var body: some View {
+//
 //        VStack {
 //            Text("Login")
 //                .font(.largeTitle)
@@ -29,11 +37,18 @@ import SwiftUI
 //                .autocapitalization(.none)
 //
 //            Button(action: {
+//
 //                print("Login Button Pressed!")
 //                // 여기서 로그인 처리 로직을 수행하십시오.
 //                isLoginValid = true
 //                print("isLoginValid: \(isLoginValid)")
-//            }) {
+////                contentView.setLogginTrue()
+////                ContentView()
+//                SharedValue.shared.isLoggedIn = true
+////                ContentView.isLoggedIn = true
+//
+//            })
+//            {
 //                Text("Login")
 //                    .font(.headline)
 //                    .foregroundColor(.white)
@@ -43,7 +58,7 @@ import SwiftUI
 //                    .cornerRadius(15.0)
 //            }
 //
-//            NavigationLink(destination: ContentView().environmentObject(ImageViewModel()), isActive: $isLoginValid) {
+//            NavigationLink(destination: ContentView(), isActive: $isLoginValid) {
 //                                EmptyView()
 //                            }
 //                            .hidden()
@@ -56,28 +71,54 @@ import SwiftUI
 struct ContentView: View {
      var imageViewModel: ImageViewModel = ImageViewModel()
     
-//    @State private var isLoggedIn = false
-    
+    @State public var isLoggedIn = false
+
+    @State private var showingAlert = false
+    @State private var resultText = ""
+
     @State private var showSheet: Bool = false
     @State private var showImagePicker: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
+    
+//    @State private var isShowingCalendar = false
     
     
     @State private var image: UIImage?
     @State private var label: String = ""
     
+    @State public var usrName: String = ""
+    
+//    @State private var dateString: String = SharedValue.shared.dateString
+    
     var body: some View {
-//        if isLoggedIn {
+        if isLoggedIn {
         NavigationView {
             
+            
             VStack {
+//                Button(action: {
+//                                self.isShowingCalendar = true
+//                    dateString = SharedValue.shared.dateString
+//                            }) {
+//                                Text("Show Calendar")
+//                                    .font(.headline)
+//                                    .foregroundColor(.white)
+//                                    .padding()
+//                                    .frame(maxWidth: .infinity)
+//                                    .background(Color.blue)
+//                                    .cornerRadius(15.0)
+//                            }
+//                            .sheet(isPresented: $isShowingCalendar) {
+//                                            CalendarView()
+//                                        }
+                
                 
                 Image(uiImage: image ?? UIImage(named: "placeholder")!)
                     .resizable()
                     .frame(width: 300, height: 400)
                             .cornerRadius(10) // 모서리 둥글게
                             .shadow(radius: 10) // 그림자 추가
-                            .padding(.bottom, 50) // 아래 버튼과의 간격
+                            .padding(.bottom, 30) // 아래 버튼과의 간격
                 
                 
                 Button(action: {
@@ -112,16 +153,21 @@ struct ContentView: View {
               
                 
                 Button(action: {
-                    imageViewModel.classifyImage(newImage : self.image)
-                    checkSafe(string: imageViewModel.classificationLabel)
-                }) {
-                    HStack {
-                        Spacer()
-                        Text("Classify")
-                            .foregroundColor(.gray)
-                        Spacer()
-                    }
-                }
+                            imageViewModel.classifyImage(newImage : self.image)
+                            checkSafe(string: imageViewModel.classificationLabel)
+                            self.resultText = label
+                            self.showingAlert = true
+                        }) {
+                            HStack {
+                                Spacer()
+                                Text("Classify")
+                                    .foregroundColor(.gray)
+                                Spacer()
+                            }
+                        }
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Classification Result"), message: Text(resultText), dismissButton: .default(Text("Got it!")))
+                        }
                 .padding()
                 .background(Color.white)
                 .font(.headline)
@@ -130,26 +176,45 @@ struct ContentView: View {
                 .frame(width: 300, height: 50)
                 
                 
-                Text(
-                    label
-                )
-                    .padding()
+                    .actionSheet(isPresented: $showSheet) {
+                        ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
+                            .default(Text("Photo Library")) {
+                                self.showImagePicker = true
+                                self.sourceType = .photoLibrary
+                            },
+                            .default(Text("Camera")) {
+                                self.showImagePicker = true
+                                self.sourceType = .camera
+                            },
+                            .cancel()
+                        ])
+                }
+                
+                
+                
             }
                 
                 
-            .navigationBarTitle("Safe Look Book")
+            .navigationBarTitle(usrName)
             
         }.sheet(isPresented: $showImagePicker) {
             
             ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
-//            ImagePicker(image: self.$imageViewModel.image, isShown: self.$showImagePicker, sourceType: self.sourceType)
-//                .environmentObject(self.imageViewModel)
         }
-//        } else {
-//                    LoginView()
-//                }
+        } else {
+            LoginView()
+                }
 
     }
+    
+//    func setDate(){
+//        let currentDate = Date()
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd" // 반환할 날짜 형식 지정
+//        dateString = dateFormatter.string(from: currentDate)
+//
+//    }
     
     func checkSafe(string: String) {
         let tools = ["helmet", "mask", "vest", "shoe"]

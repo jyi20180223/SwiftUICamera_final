@@ -14,13 +14,13 @@ import UIKit
 struct ImageAIApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject var imageViewModel = ImageViewModel()
+//    @StateObject var imageViewModel = ImageViewModel()
+//    @EnvironmentObject var isLoggedIn : Bool = false
 
     var body: some Scene {
         WindowGroup {
-//            LoginView()
-            ContentView()
-                .environmentObject(imageViewModel)
+            LoginView()
+//            ContentView()
         }
     }
 }
