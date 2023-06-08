@@ -109,23 +109,14 @@ struct ContentView: View {
                 .frame(width: 300, height: 50)
                 
                 
-                    .actionSheet(isPresented: $showSheet) {
-                        ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
-                            .default(Text("Photo Library")) {
-                                self.showImagePicker = true
-                                self.sourceType = .photoLibrary
-                            },
-                            .default(Text("Camera")) {
-                                self.showImagePicker = true
-                                self.sourceType = .camera
-                            },
-                            .cancel()
-                        ])
-                }
+                    
                 
                 
                 
             }
+            .sheet(isPresented: $showImagePicker, content: {
+                ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
+            })
                 
                 
             .navigationBarItems(trailing: Button(action: {
