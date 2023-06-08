@@ -10,5 +10,5 @@ import Foundation
 import SwiftUI
 
 class CheckInViewModel: ObservableObject {
-    @Published var datesCheckedIn: [Date] = []
+    @Published var datesCheckedIn: Set<Date> = []
 }

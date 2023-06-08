@@ -11,7 +11,7 @@ import SwiftUI
 struct CalendarView: View {
     
     @State private var selectedDates = [Date]()
-    @Binding var datesCheckedIn: [Date]
+    @Binding var datesCheckedIn: Set<Date>
     @EnvironmentObject var checkInViewModel: CheckInViewModel
     
     var body: some View {
@@ -35,16 +35,16 @@ struct CalendarView: View {
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(dates, id: \.self) { date in
                                 Button(action: {
-                                    if let index = selectedDates.firstIndex(of: date) {
-                                        selectedDates.remove(at: index)
+                                    if datesCheckedIn.contains(date) {
+                                        datesCheckedIn.remove(date)
                                     } else {
-                                        selectedDates.append(date)
+                                        datesCheckedIn.insert(date)
                                     }
                                 }) {
                                     Text("\(calendar.component(.day, from: date))")
                                         .frame(width: 40, height: 40)
-                                        .background(selectedDates.contains(date) ? Color.red : Color.clear)
-                                        .foregroundColor(selectedDates.contains(date) ? Color.white : Color.black)
+                                        .background(datesCheckedIn.contains(date) ? Color.red : Color.clear)
+                                        .foregroundColor(datesCheckedIn.contains(date) ? Color.white : Color.black)
                                         .clipShape(Circle())
                                 }
                             }

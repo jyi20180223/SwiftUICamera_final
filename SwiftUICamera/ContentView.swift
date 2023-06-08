@@ -124,8 +124,8 @@ struct ContentView: View {
                 }) {
                     Image(systemName: "calendar")
                 })
-                .sheet(isPresented: $showingCalendar) {
-                    CalendarView(datesCheckedIn: $checkInViewModel.datesCheckedIn)
+            .sheet(isPresented: $showingCalendar) {
+                        CalendarView(datesCheckedIn: $checkInViewModel.datesCheckedIn)
                 }
             
             ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
